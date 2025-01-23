@@ -9,13 +9,12 @@
 <body>
   <div class="container">
     <h1>IoT Dashboard</h1>
-    <div id="connection-status">Đang kết nối...</div> <!-- Hiển thị trạng thái kết nối -->
-    <div id="channel-list">
-      <!-- Danh sách các channel sẽ được thêm vào đây -->
-    </div>
+    <div id="connection-status">Đang kết nối...</div>
+    <div id="channel-list"></div>
     <button id="add-channel-btn">Thêm Channel</button>
   </div>
 
+  <!-- Sử dụng MQTT.js từ CDN -->
   <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
   <script src="script.js"></script>
 </body>

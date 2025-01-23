@@ -2,15 +2,7 @@
 const mqtt = require('mqtt'); // Nếu sử dụng Node.js, cần cài đặt thư viện MQTT.js
 
 // Kết nối tới server MQTT
-const client = mqtt.connect('mqtt://14.255.255.37:1883', {
-  clientId: 'my-client-id-' + Math.random().toString(16).substr(2, 8), // Tạo client ID ngẫu nhiên
-  username: 'your-username', // Tên người dùng (nếu có)
-  password: 'your-password', // Mật khẩu (nếu có)
-  keepalive: 60, // Giữ kết nối 60 giây
-  clean: true, // Dọn dẹp session
-  reconnectPeriod: 5000, // Kết nối lại sau 5 giây nếu bị ngắt
-});
-
+const client = mqtt.connect('mqtt://14.255.255.37:1883');
 
 // Lấy phần tử hiển thị trạng thái kết nối
 const connectionStatus = document.getElementById('connection-status');
