@@ -1,17 +1,31 @@
 // Kết nối MQTT server
 const client = mqtt.connect('14.225.255.37:1883/mqtt'); // Thay thế bằng MQTT broker của bạn
 
+// Lấy phần tử hiển thị trạng thái kết nối
+const connectionStatus = document.getElementById('connection-status');
+
 // Danh sách các channel
 let channels = [];
 
 // Kết nối thành công
 client.on('connect', () => {
   console.log('Connected to MQTT server');
+  connectionStatus.textContent = 'Đã kết nối tới MQTT server';
+  connectionStatus.className = 'connected'; // Thêm class để thay đổi màu nền
 });
 
 // Xử lý lỗi
 client.on('error', (err) => {
   console.error('Connection error:', err);
+  connectionStatus.textContent = 'Lỗi kết nối tới MQTT server';
+  connectionStatus.className = 'disconnected'; // Thêm class để thay đổi màu nền
+});
+
+// Kết nối bị ngắt
+client.on('close', () => {
+  console.log('Connection closed');
+  connectionStatus.textContent = 'Mất kết nối tới MQTT server';
+  connectionStatus.className = 'disconnected'; // Thêm class để thay đổi màu nền
 });
 
 // Hàm thêm channel mới
