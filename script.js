@@ -1,5 +1,5 @@
 // Kết nối MQTT server
-const client = mqtt.connect('14.225.255.37:8000/mqtt'); // Thay thế bằng MQTT broker của bạn
+const client = mqtt.connect('14.225.255.37:1883/mqtt'); // Thay thế bằng MQTT broker của bạn
 
 // Danh sách các channel
 let channels = [];
@@ -16,6 +16,7 @@ client.on('error', (err) => {
 
 // Hàm thêm channel mới
 function addChannel(channelName, macroName) {
+  console.log('Thêm channel:', channelName, macroName); // Kiểm tra dữ liệu nhập vào
   const channel = { channelName, macroName };
   channels.push(channel);
   renderChannels();
@@ -24,6 +25,7 @@ function addChannel(channelName, macroName) {
 // Hàm hiển thị danh sách channel
 function renderChannels() {
   const channelList = document.getElementById('channel-list');
+  console.log('Render channels:', channels); // Kiểm tra danh sách channels
   channelList.innerHTML = ''; // Xóa nội dung cũ
 
   channels.forEach((channel, index) => {
@@ -53,6 +55,7 @@ function sendCommand(channelName, macroName) {
 
 // Thêm sự kiện cho nút "Thêm Channel"
 document.getElementById('add-channel-btn').addEventListener('click', () => {
+  console.log('Nút "Thêm Channel" đã được nhấn'); // Kiểm tra xem sự kiện có hoạt động không
   const channelName = prompt('Nhập tên channel:');
   const macroName = prompt('Nhập macro name:');
   if (channelName && macroName) {
