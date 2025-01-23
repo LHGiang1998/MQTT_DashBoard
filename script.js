@@ -1,6 +1,6 @@
 
 // Kết nối tới server MQTT
-const client = mqtt.connect('14.255.255.37:1883', {
+const client = mqtt.connect('mqtt://14.255.255.37:1883', {
   clientId: 'my-client-id-' + Math.random().toString(16).substr(2, 8), // Tạo client ID ngẫu nhiên
   keepalive: 60, // Giữ kết nối 60 giây
   clean: true, // Dọn dẹp session
